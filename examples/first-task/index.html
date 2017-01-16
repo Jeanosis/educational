@@ -7,6 +7,7 @@
         body {
             background-color: #BBDEFB;
             margin: 0;
+            overflow: hidden;
         }
 
         .grass {
@@ -19,12 +20,13 @@
 
         .tractor {
             position: absolute;
-            width: 500px;
+            width: 700px;/*500px;*/
             height: 360px;
             border: 1px solid red;
-            left: 50%;
-            top: 50%;
-            margin: -180px 0 0 -250px;
+            /*left: 50%;
+            top: 50%;*/
+            /*margin: -180px 0 0 -250px;*/
+            margin: auto;
             z-index: 1;
         }
 
@@ -104,22 +106,39 @@
             z-index: 5;
             background-color: forestgreen;
         }
-
     </style>
 </head>
 <body>
     <h1>First task. Tractor.</h1>
     <div class="sun"></div>
     <div class="tractor">  
-        <div class="tire_r">    </div> 
-        <div class="wheel_r">   </div>
-        <div class="tire_l">    </div>
-        <div class="wheel_l">   </div>
-        <div class="cabin">   </div>
-        <div class="bottom_element"> </div>
-        <div class="roof">   </div>
+        <div class="tire_r"></div> 
+        <div class="wheel_r"></div>
+        <div class="tire_l"></div>
+        <div class="wheel_l"></div>
+        <div class="cabin"></div>
+        <div class="bottom_element"></div>
+        <div class="roof"></div>
     </div>
 
     <div class="grass"></div>
+
+    <script>
+        var tractor = document.getElementsByClassName('tractor')[0];
+
+        //tractor moving function
+        tractor_move(tractor, tractor.offsetLeft, 10);
+        function tractor_move(tractor, currentLeft, shift) {
+            tractor.style.left = currentLeft + 'px';
+            currentLeft += shift;
+
+            setTimeout(function() {
+                if (window.innerWidth < currentLeft)
+                    tractor_move(tractor, -tractor.offsetWidth, shift);//tractor, -tractor.innerWidth, shift);
+                else
+                    tractor_move(tractor, currentLeft, shift);
+            }, 25);
+        }
+    </script>
 </body>
 </html>
