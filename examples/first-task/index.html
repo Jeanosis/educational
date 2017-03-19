@@ -14,8 +14,9 @@
             position: fixed;
             width: 100%;
             height: 50%;
-            background-color: #A0522D;
+            /*background-color: #A0522D;*/
             bottom: 0;
+            z-index: 0;
         }
 
         .tractor {
@@ -104,6 +105,45 @@
             background-color: forestgreen;
         }
         
+        .tree{
+            position: absolute;
+            height: 300px;
+            width: 100px;
+        }
+        .one{
+            position: absolute;
+            top:0%;
+            width: 0;
+	        height: 0;
+	        border-left: 50px solid transparent;
+	        border-right: 50px solid transparent;
+        	border-bottom: 100px solid red;
+            z-index: 100;
+        }
+        .two{
+            position: absolute;
+            top: 33%;
+            width: 0;
+	        height: 0;
+	        border-left: 50px solid transparent;
+	        border-right: 50px solid transparent;
+        	border-bottom: 100px solid red;
+            z-index: 100;
+
+        }
+        .three{
+            position: absolute;
+            top: 66%;
+            width: 0;
+	        height: 0;
+	        border-left: 50px solid transparent;
+	        border-right: 50px solid transparent;
+        	border-bottom: 100px solid red;
+            z-index: 100;
+
+        }
+        
+        
     </style>
 </head>
 <body>
@@ -121,6 +161,12 @@
 
     <div class="grass"></div>
 
+    <div class="tree">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </div>
+
     <script>
         var tractor = document.getElementsByClassName('tractor')[0];
 
@@ -137,6 +183,22 @@
                     tractor_move(tractor, currentLeft, shift);
             }, 25);
         }
+//---------------------------------------------------------------
+        var tree = document.getElementsByClassName('tree')[0];
+        //tree moving function
+        tree_move(tree, tree.offsetLeft, 10);
+        function tree_move(tree, currentRight, shift) {
+            tree.style.right = currentRight + 'px';
+            currentRight += shift;
+
+            setTimeout (function(){
+                if (window.innerWidth < currentRight)
+                    tree_move(tree, tree.offsetWidth, shift)
+                else
+                    tree_move(tree, currentRight, shift);
+            }, 25);
+        }
+
     </script>
 </body>
 </html>
