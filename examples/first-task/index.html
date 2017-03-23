@@ -193,7 +193,7 @@
 
             setTimeout (function(){
                 if (window.innerWidth < currentRight)
-                    tree_move(tree, tree.offsetWidth, shift)
+                    tree_move(tree, -tree.offsetWidth, shift)
                 else
                     tree_move(tree, currentRight, shift);
             }, 25);
