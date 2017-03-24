@@ -3,29 +3,60 @@
 <head>
     <title>My title</title>
     <meta charset="UTF-8">
+     
+    <style>
+        .title{
+            color: #E0E0E0;
+            font-size: 40pt;
+        }
+    </style>
+
 </head>
 <body>
-    <div id="test" style="background-color: red; width: 200px; text-align: center; cursor: pointer;">RED</div>
-    <button id="test2" style="background-color: orange; width: 200px; text-align: center; cursor: pointer;">CLICK ME</button>
-    <nav>
-        <!--menu here-->
+    <center> <h1> <span class="title"> Pick a color! </span> </h1> </center>
+    
+    <nav id="container" style="position: absolute; width: 70%; background-color: black; left: 15%; height: 15%; top: 15%;">
+    <button id="but_1" style="position: absolute; left: 0%; color: #F44336; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Red</button>
+    <button id="but_2" style="position: absolute; left: 12.5%; color: #FF9800; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Orange</button>
+    <button id="but_3" style="position: absolute; left: 25%; color: #009688; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Teal</button>
+    <button id="but_4" style="position: absolute; left: 37.5%; color: #2196F3; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Blue</button>
+    <button id="but_5" style="position: absolute; left: 50%; color: #2E7D32; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Green</button>
+    <button id="but_6" style="position: absolute; left: 62.5%; color: #212121; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Black</button>
+    <button id="but_7" style="position: absolute; left: 75%; color: #3F51B5; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Indigo</button>
+    <button id="but_8" style="position: absolute; left: 87.5%; color: #E91E63; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Pink</button>
     </nav>
+
     <script>
-        var test = document.getElementById('test'),
-            button = document.getElementById('test2'),
-            body = document.getElementsByTagName('body')[0];
         
+        var red = document.getElementById('but_1'),
+            orange = document.getElementById('but_2'),
+            teal = document.getElementById('but_3'),
+            light_blue = document.getElementById('but_4'),
+            green = document.getElementById('but_5'),
+            black = document.getElementById('but_6'),
+            indigo = document.getElementById('but_7'),
+            pink = document.getElementById('but_8'),
+            body = document.getElementsByTagName('body')[0];
+
         var styles = window.getComputedStyle(body);
+        body.style.backgroundColor = '#004D40';
 
-        test.addEventListener('click', sayHello);
-        button.addEventListener('click', sayHello);
+        red.addEventListener('click', changeColor);
+        orange.addEventListener('click', changeColor);
+        teal.addEventListener('click', changeColor);
+        light_blue.addEventListener('click', changeColor);
+        green.addEventListener('click', changeColor);
+        black.addEventListener('click', changeColor);
+        indigo.addEventListener('click', changeColor);
+        pink.addEventListener('click', changeColor);
 
-        function sayHello(event) {
+
+        function changeColor(event) {
             var obj = event.target;
-            console.log('HELLO', obj.id);
-            body.style.border = '10px solid red';
+            console.log('id:', obj.id); 
+            body.style.backgroundColor = obj.style.color;
 
-            console.log(styles.getPropertyValue('border'), obj.innerHTML);
+            console.log(obj.innerHTML);
         }
     </script>
 </body>
