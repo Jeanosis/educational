@@ -5,55 +5,109 @@
     <meta charset="UTF-8">
      
     <style>
+        /*Header*/
         .title{
             color: #E0E0E0;
-            font-size: 40pt;
+            font-size: 40px;
+        }
+
+        .head-wrapper {
+            text-align: center;
+        }
+        /*-------*/
+
+        .color-btn {
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        #tableContainer {
+             width: 900px;
+             height: 70px;
+        }
+
+        /*Table*/
+        .color-menu {
+            display: table;
+        }
+
+        .color-menu > * {
+            display: table-cell;
+            width: 12.5%;
+            height: 100%;
         }
     </style>
-
 </head>
 <body>
-    <center> <h1  class="title"> Pick a color!</h1> </center>
-    
-    <nav id="container" style="position: absolute; width: 70%; left: 15%; height: 15%; top: 15%;">
-    <button id="but_1" style="position: absolute; left: 0%; color: #F44336; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Red</button>
-    <button id="but_2" style="position: absolute; left: 12.5%; color: #FF9800; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Orange</button>
-    <button id="but_3" style="position: absolute; left: 25%; color: #009688; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Teal</button>
-    <button id="but_4" style="position: absolute; left: 37.5%; color: #2196F3; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Blue</button>
-    <button id="but_5" style="position: absolute; left: 50%; color: #2E7D32; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Green</button>
-    <button id="but_6" style="position: absolute; left: 62.5%; color: #212121; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Black</button>
-    <button id="but_7" style="position: absolute; left: 75%; color: #3F51B5; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Indigo</button>
-    <button id="but_8" style="position: absolute; left: 87.5%; color: #E91E63; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Pink</button>
+    <header>
+        <div class="head-wrapper">
+            <h1 class="title">Pick a color!</h1>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h2>Using 'display: table'</h2>
+            <nav id="tableContainer" class="color-menu">
+                <button style="color: #F44336;" class="color-btn">Red</button>
+                <button style="color: #FF9800;" class="color-btn">Orange</button>
+                <button style="color: #009688;" class="color-btn">Teal</button>
+                <button style="color: #2196F3;" class="color-btn">Blue</button>
+                <button style="color: #2E7D32;" class="color-btn">Green</button>
+                <button style="color: #212121;" class="color-btn">Black</button>
+                <button style="color: #3F51B5;" class="color-btn">Indigo</button>
+                <button style="color: #E91E63;" class="color-btn">Pink</button>
+            </nav>
+        </section>
+    </main>
+    <!--<center> <h1  class="title"> Pick a color!</h1> </center>
+
+    <nav id="container" style="position: absolute; width: 70%; left: 15%; height: 15%; top: 15%;" class="color-menu">
+        <button id="but_1" style="position: absolute; left: 0%; color: #F44336; width: 12.5%; height: 100%;" class="color-btn">Red</button>
+        <button id="but_2" style="position: absolute; left: 12.5%; color: #FF9800; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Orange</button>
+        <button id="but_3" style="position: absolute; left: 25%; color: #009688; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Teal</button>
+        <button id="but_4" style="position: absolute; left: 37.5%; color: #2196F3; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Blue</button>
+        <button id="but_5" style="position: absolute; left: 50%; color: #2E7D32; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Green</button>
+        <button id="but_6" style="position: absolute; left: 62.5%; color: #212121; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Black</button>
+        <button id="but_7" style="position: absolute; left: 75%; color: #3F51B5; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Indigo</button>
+        <button id="but_8" style="position: absolute; left: 87.5%; color: #E91E63; font-size: 23pt; width: 12.5%; height: 100%; text-align: center; cursor: pointer;">Pink</button>
     </nav>
+    <button class="color-btn"></button>-->
 
     <script>
-        
-        var red = document.getElementById('but_1'),
-            orange = document.getElementById('but_2'),
-            teal = document.getElementById('but_3'),
-            light_blue = document.getElementById('but_4'),
-            green = document.getElementById('but_5'),
-            black = document.getElementById('but_6'),
-            indigo = document.getElementById('but_7'),
-            pink = document.getElementById('but_8'),
+        var menu = document.getElementsByClassName('color-menu')[0],
+            items = menu.querySelectorAll('button'),
             body = document.getElementsByTagName('body')[0];
+        
+        items.forEach(function(item) {
+            item.addEventListener('click', changeColor);
+        });
 
-        var styles = window.getComputedStyle(body);
-        body.style.backgroundColor = '#004D40';
+        // var red = document.getElementById('but_1'),
+        //     orange = document.getElementById('but_2'),
+        //     teal = document.getElementById('but_3'),
+        //     light_blue = document.getElementById('but_4'),
+        //     green = document.getElementById('but_5'),
+        //     black = document.getElementById('but_6'),
+        //     indigo = document.getElementById('but_7'),
+        //     pink = document.getElementById('but_8'),
+        //     body = document.getElementsByTagName('body')[0];
 
-        red.addEventListener('click', changeColor);
-        orange.addEventListener('click', changeColor);
-        teal.addEventListener('click', changeColor);
-        light_blue.addEventListener('click', changeColor);
-        green.addEventListener('click', changeColor);
-        black.addEventListener('click', changeColor);
-        indigo.addEventListener('click', changeColor);
-        pink.addEventListener('click', changeColor);
+        // var styles = window.getComputedStyle(body);
+        // body.style.backgroundColor = '#004D40';
+
+        // red.addEventListener('click', changeColor);
+        // orange.addEventListener('click', changeColor);
+        // teal.addEventListener('click', changeColor);
+        // light_blue.addEventListener('click', changeColor);
+        // green.addEventListener('click', changeColor);
+        // black.addEventListener('click', changeColor);
+        // indigo.addEventListener('click', changeColor);
+        // pink.addEventListener('click', changeColor);
 
 
         function changeColor(event) {
             var obj = event.target;
-            console.log('id:', obj.id); 
+            console.log('id:', obj.innerHTML);
             body.style.backgroundColor = obj.style.color;
 
             console.log(obj.innerHTML);
