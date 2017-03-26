@@ -21,20 +21,23 @@
             cursor: pointer;
         }
 
-        #tableContainer {
+        .color-menu {
              width: 900px;
              height: 70px;
         }
 
+        .color-menu > * {
+            width: 12.5%;
+            height: 100%;
+        }
+
         /*Table*/
-        .color-menu {
+        #tableExample .color-menu {
             display: table;
         }
 
-        .color-menu > * {
+        #tableExample .color-menu > * {
             display: table-cell;
-            width: 12.5%;
-            height: 100%;
         }
     </style>
 </head>
@@ -45,9 +48,9 @@
         </div>
     </header>
     <main>
-        <section>
+        <section id="tableExample">
             <h2>Using 'display: table'</h2>
-            <nav id="tableContainer" class="color-menu">
+            <nav class="color-menu">
                 <button style="color: #F44336;" class="color-btn">Red</button>
                 <button style="color: #FF9800;" class="color-btn">Orange</button>
                 <button style="color: #009688;" class="color-btn">Teal</button>
