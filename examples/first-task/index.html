@@ -75,7 +75,6 @@
                 <button style="color: #E91E63;" class="color-btn">Pink</button>
             </nav>
         </section>
-
         <section id="inlineBlockExample">
             <h2>Using 'inlineBlock'</h2>
             <nav class="color-menu">
@@ -89,7 +88,6 @@
                 <button style="color: #E91E63;" class="color-btn">Pink</button>
             </nav>
         </section>
-
         <section id="flexboxExample">
             <h2>Using 'flexbox'</h2>
             <nav class="color-menu">
@@ -106,21 +104,38 @@
     </main>
    
     <script>
-        var menu = document.getElementsByClassName('color-menu')[0],
-            items = menu.querySelectorAll('button'),
-            body = document.body; //getElementsByTagName('body')[0];
-        
-        items.forEach(function(item) {
-            item.addEventListener('click', changeColor);
-        });
+        (function(document) {
+            var menus = document.getElementsByClassName('color-menu');
+            
+            for (var i = 0; i < menus.length; i++) {
+                var menu = menus.item(i),
+                    items = menu.querySelectorAll('button');
 
-        function changeColor(event) {
-            var obj = event.target;
-            console.log('id:', obj.innerHTML);
-            body.style.backgroundColor = obj.style.color;
+                items.forEach(function(item) {
+                    item.addEventListener('click', changeColor);
+                });
+            }
 
-            console.log(obj.innerHTML);
-        }
+            function changeColor(event) {
+                var obj = event.target;
+                console.log('id:', obj.innerHTML);
+                document.body.style.backgroundColor = obj.style.color;
+                // colorExample(obj.style.color);
+
+                console.log(obj.innerHTML);
+            }
+            
+            function colorExample(color) {
+                // console.log('COLOR', color);
+                // for (var i = 0; i < color.length; i++) {
+                //     console.log(color[i]);
+                // }
+                var gray = (239 + 83 + 80) / 3;
+                console.log('gray', gray);
+
+                return 'rgb(' + gray + ', ' + gray + ', ' + gray + ')';
+            }
+        })(document);
     </script>
 </body>
 </html>
