@@ -75,7 +75,7 @@
                 <button style="color: #E91E63;" class="color-btn">Pink</button>
             </nav>
         </section>
-        <section id="inlineBlockExample">
+        <!--<section id="inlineBlockExample">
             <h2>Using 'inlineBlock'</h2>
             <nav class="color-menu">
                 <button style="color: #F44336;" class="color-btn">Red</button>
@@ -100,7 +100,7 @@
                 <button style="color: #3F51B5;" class="color-btn">Indigo</button>
                 <button style="color: #E91E63;" class="color-btn">Pink</button>
             </nav>
-        </section>
+        </section>-->
     </main>
    
     <script>
@@ -120,20 +120,22 @@
                 var obj = event.target;
                 console.log('id:', obj.innerHTML);
                 document.body.style.backgroundColor = obj.style.color;
-                // colorExample(obj.style.color);
-
-                console.log(obj.innerHTML);
+                colorExample(obj.style.color);
             }
-            
-            function colorExample(color) {
-                // console.log('COLOR', color);
-                // for (var i = 0; i < color.length; i++) {
-                //     console.log(color[i]);
-                // }
-                var gray = (239 + 83 + 80) / 3;
-                console.log('gray', gray);
+            var values = '';
 
-                return 'rgb(' + gray + ', ' + gray + ', ' + gray + ')';
+            function colorExample(color) {
+                console.log('COLOR', color);
+                for(var i = 0; i < color.length; i++){
+                    str = color[i];
+                    if(str >= '0' && str <= '9'){
+                        values += str;
+                    }
+                    if(str == ','){
+                        console.log(',');
+                    }
+                }
+                console.log('values', values);
             }
         })(document);
     </script>
