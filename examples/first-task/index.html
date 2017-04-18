@@ -39,20 +39,6 @@
         #tableExample .color-menu > * {
             display: table-cell;
         }
-        /*Inline*/
-        #inlineBlockExample .color-menu{
-            display: inline;
-        }
-        #inlineBlockExample .color-menu > * {
-            display: inline-block;
-        }
-        /*Flex*/
-        #flexboxExample .color-menu{
-            display: flex;
-        }
-        #flexboxExample .color-menu > * {
-            display: inline-flex; 
-        }
     </style>
 </head>
 <body>
@@ -122,7 +108,10 @@
                 document.body.style.backgroundColor = obj.style.color;
                 colorExample(obj.style.color);
             }
-            var values = '';
+            var values = '',
+                r = '',
+                g = '',
+                b = '';
 
             function colorExample(color) {
                 console.log('COLOR', color);
@@ -130,12 +119,14 @@
                     str = color[i];
                     if(str >= '0' && str <= '9'){
                         values += str;
+                        r = str;
                     }
                     if(str == ','){
-                        console.log(',');
+                        // console.log(',');
                     }
                 }
-                console.log('values', values);
+                console.log('values:', values);
+                values = '';
             }
         })(document);
     </script>
