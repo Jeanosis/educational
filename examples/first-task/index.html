@@ -6,16 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
     <style>
-        /*Header*/
         .title{
             color: #E0E0E0;
             font-size: 40px;
+        }
+        #title2{
+            font-size: 200px;
+            color: white;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            position: absolute; 
+            top: 60%; 
+            left: 50%;
         }
 
         .head-wrapper {
             text-align: center;
         }
-        /*-------*/
 
         .color-btn {
             font-size: 23px;
@@ -26,26 +34,34 @@
              width: 900px;
              height: 70px;
         }
-
+        
         .color-menu > * {
             width: 12.5%;
             height: 100%;
         }
 
-        /*Table*/
         #tableExample .color-menu {
+            position: absolute;
             display: table;
         }
-
         #tableExample .color-menu > * {
+            border: 0px;
             display: table-cell;
         }
+        #tableExample .color-menu > *:hover{
+            transform: scale(1.1);
+        }
+        body:hover{
+            transition-duration: 2s;
+        }
+        
     </style>
 </head>
 <body>
     <header>
         <div class="head-wrapper">
             <h1 class="title">Pick a color!</h1>
+            <div id='title2'></div>
         </div>
     </header>
     <main>
@@ -76,25 +92,45 @@
                     item.addEventListener('click', changeColor);
                     item.style.backgroundColor = item.innerHTML;
                     item.style.color = getTextColor(item.style.backgroundColor);
-                    console.log('hey');
                 });
             }
 
             function changeColor(event) {
                 var obj = event.target;
                 document.body.style.backgroundColor = obj.style.backgroundColor;
+                var myC = document.body.style.backgroundColor,
+                    beginIndex2 = myC.indexOf('('),
+                    substring2 = myC.substring(beginIndex2 + 1, myC.length - 1),
+                    colorParams2 = substring2.split(', '),
+                    r = parseInt(colorParams2[0]),
+                    g = parseInt(colorParams2[1]),
+                    b = parseInt(colorParams2[2]);
+
+                var t2 = document.getElementById('title2');
+
+                if(r > b)
+                    t2.innerHTML = 'Warm';
+                
+                if(r < b)
+                    t2.innerHTML = 'Cold';
+                
+                if((r == b) && ((r + g + b) > (255 / 3)))
+                    t2.innerHTML = 'Cold';
+                
+                if((r == b) && ((r + g + b) < (255 / 3)))
+                    t2.innerHTML = 'Warm';
             }
-            
+
             function getTextColor(color) {
+                
                 console.log('COLOR', color);
                 var beginIndex = color.indexOf('('),
-                    substring = color.substring(beginIndex + 1, color.length - 1);
-                
-                var colorParams = substring.split(', ');
+                    substring = color.substring(beginIndex + 1, color.length - 1),
+                    colorParams = substring.split(', ');
 
                 var sum = parseInt(colorParams[0]) + parseInt(colorParams[1]) + parseInt(colorParams[2]),
                     gray = sum / 3;
-                
+
                 return gray < 127.5 ? 'white' : 'black';
             }
 
