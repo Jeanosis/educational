@@ -41,7 +41,6 @@
         }
         
         #tableExample .color-menu {
-            position: absolute;
             display: table;
         }
         #tableExample .color-menu > * {
@@ -78,63 +77,81 @@
                 <button class="color-btn">#3F51B5</button>
                 <button class="color-btn">#E91E63</button>
             </nav>
+            <nav class="color-menu"></nav>
         </section>
     </main>
    
     <script>
         (function(document) {
-            var menus = document.getElementsByClassName('color-menu');
+            var menus = document.getElementsByClassName('color-menu'),
+                colors = [ '#F44336', '#FF9800', '#009688', '#2196F3', '#2E7D32', '#212121', '#3F51B5', '#E91E63' ];
             
-            for (var i = 0; i < menus.length; i++) {
-                var menu = menus.item(i),
-                    items = menu.querySelectorAll('button');
+            // for (var i = 0; i < menus.length; i++) {
+            var menu = menus.item(0),
+                items = menu.querySelectorAll('button');
 
-                items.forEach(function(item) {
-                    item.addEventListener('click', changeColor);
-                    item.style.backgroundColor = item.innerHTML;
-                    item.style.color = getTextColor(item.style.backgroundColor);
+            items.forEach(function(item) {
+                item.addEventListener('click', changeColor);
+                item.style.backgroundColor = item.innerHTML;
+                item.style.color = getTextColor(item.style.backgroundColor);
+            });
+            // }
+
+            initializeButtons(menus.item(1), colors);
+
+            function initializeButtons(menu, colors) {
+                colors.forEach(function(color) {
+                    var button = document.createElement('button');
+
+                    menu.appendChild(button);
+                    button.innerHTML = color;
                 });
             }
 
             function changeColor(event) {
-                var obj = event.target;
-                document.body.style.backgroundColor = obj.style.backgroundColor;
-                var myC = document.body.style.backgroundColor,
-                    beginIndex2 = myC.indexOf('('),
-                    substring2 = myC.substring(beginIndex2 + 1, myC.length - 1),
-                    colorParams2 = substring2.split(', '),
-                    r = parseInt(colorParams2[0]),
-                    g = parseInt(colorParams2[1]),
-                    b = parseInt(colorParams2[2]);
+                var obj = event.target,
+                    color = obj.style.backgroundColor;
+
+                document.body.style.backgroundColor = color;
 
                 var t2 = document.getElementById('title2');
-
-                if(r > b)
-                    t2.innerHTML = 'Warm';
-                
-                if(r < b)
-                    t2.innerHTML = 'Cold';
-                
-                if((r == b) && ((r + g + b) > (255 / 3)))
-                    t2.innerHTML = 'Cold';
-                
-                if((r == b) && ((r + g + b) < (255 / 3)))
-                    t2.innerHTML = 'Warm';
+                t2.innerHTML = isColorWarm(color) ? 'Warm' : 'Cold';
             }
 
             function getTextColor(color) {
-                
-                console.log('COLOR', color);
-                var beginIndex = color.indexOf('('),
-                    substring = color.substring(beginIndex + 1, color.length - 1),
-                    colorParams = substring.split(', ');
+                var rgbColor = getRGB(color);
 
-                var sum = parseInt(colorParams[0]) + parseInt(colorParams[1]) + parseInt(colorParams[2]),
+                var sum = rgbColor.r + rgbColor.g + rgbColor.b,
                     gray = sum / 3;
 
                 return gray < 127.5 ? 'white' : 'black';
             }
 
+            function isColorWarm(color) {
+                var rgbColor = getRGB(color);
+
+                if (rgbColor.r > rgbColor.b) {
+                    return true;
+                } else if (rgbColor.r < rgbColor.b) {
+                    return false;
+                } else if ((r + g + b) > (255 / 3)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function getRGB(color) {
+                var beginIndex = color.indexOf('('),
+                    substring = color.substring(beginIndex + 1, color.length - 1),
+                    colorParams = substring.split(', ');
+                
+                return {
+                    r: parseInt(colorParams[0]),
+                    g: parseInt(colorParams[1]),
+                    b: parseInt(colorParams[2])
+                };
+            }
             
         })(document);
     </script>
