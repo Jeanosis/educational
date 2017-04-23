@@ -17,7 +17,7 @@
             height: auto;
             transform: translate(-50%, -50%);
             position: absolute; 
-            top: 60%; 
+            top: 70%; 
             left: 50%;
         }
 
@@ -86,7 +86,6 @@
             var menus = document.getElementsByClassName('color-menu'),
                 colors = [ '#F44336', '#FF9800', '#009688', '#2196F3', '#2E7D32', '#212121', '#3F51B5', '#E91E63' ];
             
-            // for (var i = 0; i < menus.length; i++) {
             var menu = menus.item(0),
                 items = menu.querySelectorAll('button');
 
@@ -95,7 +94,6 @@
                 item.style.backgroundColor = item.innerHTML;
                 item.style.color = getTextColor(item.style.backgroundColor);
             });
-            // }
 
             initializeButtons(menus.item(1), colors);
 
@@ -105,6 +103,10 @@
 
                     menu.appendChild(button);
                     button.innerHTML = color;
+                    button.style.backgroundColor = button.innerHTML;
+                    button.className = 'color-btn';
+                    button.style.color = getTextColor(button.style.backgroundColor);
+                    button.addEventListener('click', changeColor);
                 });
             }
 
@@ -116,6 +118,7 @@
 
                 var t2 = document.getElementById('title2');
                 t2.innerHTML = isColorWarm(color) ? 'Warm' : 'Cold';
+                t2.style.color = getTextColor(color);
             }
 
             function getTextColor(color) {
