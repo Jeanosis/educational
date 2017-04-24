@@ -1,0 +1,93 @@
+        .title{
+            color: #E0E0E0;
+            font-size: 40px;
+        }
+        #title2{
+            font-size: 200px;
+            color: white;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            position: absolute; 
+            top: 70%; 
+            left: 50%;
+        }
+
+        .head-wrapper {
+            text-align: center;
+        }
+
+        .color-btn {
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .color-menu {
+             width: 870px;
+             height: 70px;
+        }
+        
+        .color-menu > * {
+            width: 12.5%;
+            height: 100%;
+        }
+        
+        #tableExample .color-menu {
+            display: table;
+        }
+        #tableExample .color-menu > * {
+            border: 0px;
+            display: table-cell;
+        }
+        #tableExample .color-menu > *:hover{
+            transform: scale(1.1);
+            transition-duration: 60ms;
+        }
+        body:hover{
+            transition-duration: 2s;
+        }
+        #main-button{
+            height: 60px;
+            width: 60px;
+            background-color: whitesmoke;
+            border: 2px inset #212121;
+            color: black;
+            top: 25%;
+            right: 115px;
+            position: absolute;
+            font-size: 23px;
+            cursor: pointer;
+        }
+        #remove-button{
+            width: 100px;
+            height: 60px;
+            background-color: whitesmoke;
+            color: black;
+            border: 2px inset #212121;
+            top: 25%;
+            right: 7px;
+            font-size: 23px;    
+            position: absolute;
+            cursor: pointer;
+        }
+        #txt{
+            position: absolute;
+            left: 10%;
+            top: 19%;
+            width: 230px;
+            font-size: 60px;
+        }
+        #container{
+            height: 120px;
+            width: 460px;
+            border: 2px solid #212121;
+            background-color: whitesmoke;
+            position: absolute;
+            right: 10px;
+        }
+        #label{
+            position: absolute;
+            font-size: 70px;
+            top: 20%;
+            left: 7px;
+        }

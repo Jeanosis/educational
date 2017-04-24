@@ -1,121 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My title</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-    <style>
-        .title{
-            color: #E0E0E0;
-            font-size: 40px;
-        }
-        #title2{
-            font-size: 200px;
-            color: white;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            position: absolute; 
-            top: 70%; 
-            left: 50%;
-        }
-
-        .head-wrapper {
-            text-align: center;
-        }
-
-        .color-btn {
-            font-size: 23px;
-            cursor: pointer;
-        }
-
-        .color-menu {
-             width: 900px;
-             height: 70px;
-        }
-        
-        .color-menu > * {
-            width: 12.5%;
-            height: 100%;
-        }
-        
-        #tableExample .color-menu {
-            display: table;
-        }
-        #tableExample .color-menu > * {
-            border: 0px;
-            display: table-cell;
-        }
-        #tableExample .color-menu > *:hover{
-            transform: scale(1.1);
-            transition-duration: 60ms;
-        }
-        body:hover{
-            transition-duration: 2s;
-        }
-        #main-button{
-            height: 100px;
-            width: 100px;
-            background-color: black;
-            color: white;
-            border: 0px;
-            top: 300px;
-            right: 100px;
-            position: absolute;
-            font-size: 35px;
-        }
-        #txt{
-            position: absolute;
-            right: 100px;
-            top: 250px;
-            width: 100px;
-            font-size: 20px;
-        }
-        #remove-button{
-            width: 160px;
-            height: 100px;
-            background-color: black;
-            color: white;
-            border: 0px;
-            top: 300px;
-            right: 220px;
-            font-size: 35px;    
-            position: absolute;
-        }
-        
-    </style>
-</head>
-<body>
-    <header>
-        <div class="head-wrapper">
-            <h1 class="title">Pick a color!</h1>
-            <div id='title2'></div>
-        </div>
-    </header>
-    <main>
-        <section id="tableExample">
-            <h2>Using 'display: table'</h2>
-            <!--<nav class="color-menu">
-                <button class="color-btn">#F44336</button>
-                <button class="color-btn">#FF9800</button>
-                <button class="color-btn">#009688</button>
-                <button class="color-btn">#2196F3</button>
-                <button class="color-btn">#2E7D32</button>
-                <button class="color-btn">#212121</button>
-                <button class="color-btn">#3F51B5</button>
-                <button class="color-btn">#E91E63</button>
-            </nav>-->
-            <nav class="color-menu"></nav>
-            <button id='main-button'>Add</button>
-            <button id='remove-button'>Remove</button>
-            <input type="text" id='txt' value="#"/>
-
-        </section>
-    </main>
-   
-    <script>
-        (function(document) {
+    function ready(){
+            (function(document) {
             var colors = [ '#F44336', '#FF9800', '#009688', '#2196F3', '#2E7D32', '#212121', '#3F51B5', '#E91E63' ],
                 menus = document.getElementsByClassName('color-menu'),
                 menu = menus.item(0),
@@ -124,17 +8,17 @@
             document.getElementById('main-button').addEventListener('click', function(event) {
                 var inputValue = document.getElementById('txt').value;
 
-                if(inputValue.length == 7){
+                if(inputValue.length == 6){
                     var button = document.createElement('button');
 
                     menu.appendChild(button);
                     button.className = 'color-btn';
-                    button.innerHTML = inputValue;
+                    button.innerHTML = '#' + inputValue;
                     button.style.backgroundColor = button.innerHTML;
                     button.addEventListener('click', changeColor);
                     button.style.color = getTextColor(button.style.backgroundColor);
 
-                    document.getElementById('txt').value = '#';
+                    document.getElementById('txt').value = '';
                 }
             });
 
@@ -211,6 +95,5 @@
             }
             
         })(document);
-    </script>
-</body>
-</html>
+    }
+    document.addEventListener("DOMContentLoaded", ready);
