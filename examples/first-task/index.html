@@ -54,6 +54,24 @@
         body:hover{
             transition-duration: 2s;
         }
+        #main-button{
+            height: 100px;
+            width: 100px;
+            background-color: black;
+            color: white;
+            border: 0px;
+            top: 300px;
+            right: 200px;
+            position: absolute;
+            font-size: 35px;
+        }
+        #txt{
+            position: absolute;
+            right: 200px;
+            top: 250px;
+            width: 100px;
+            font-size: 20px;
+        }
         
     </style>
 </head>
@@ -67,7 +85,7 @@
     <main>
         <section id="tableExample">
             <h2>Using 'display: table'</h2>
-            <nav class="color-menu">
+            <!--<nav class="color-menu">
                 <button class="color-btn">#F44336</button>
                 <button class="color-btn">#FF9800</button>
                 <button class="color-btn">#009688</button>
@@ -76,8 +94,11 @@
                 <button class="color-btn">#212121</button>
                 <button class="color-btn">#3F51B5</button>
                 <button class="color-btn">#E91E63</button>
-            </nav>
+            </nav>-->
             <nav class="color-menu"></nav>
+            <button id='main-button'>Add</button>
+            <input type="text" id='txt' value="#"/>
+
         </section>
     </main>
    
@@ -94,8 +115,29 @@
                 item.style.backgroundColor = item.innerHTML;
                 item.style.color = getTextColor(item.style.backgroundColor);
             });
+            //
+            document.getElementById('main-button').addEventListener('click', addButton);
+            
+            function addButton(event){
 
-            initializeButtons(menus.item(1), colors);
+                var inputValue = document.getElementById('txt').value;
+
+                if(inputValue.length == 7){
+                    var button = document.createElement('button');
+
+                    menu.appendChild(button);
+                    button.className = 'color-btn';
+                    button.innerHTML = inputValue;
+                    button.style.backgroundColor = button.innerHTML;
+                    button.addEventListener('click', changeColor);
+                    button.style.color = getTextColor(button.style.backgroundColor);
+
+                    document.getElementById('txt').value = '#';
+                }
+            }
+            //
+
+            initializeButtons(menus.item(0), colors);
 
             function initializeButtons(menu, colors) {
                 colors.forEach(function(color) {
