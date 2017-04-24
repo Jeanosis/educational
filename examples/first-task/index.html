@@ -61,16 +61,27 @@
             color: white;
             border: 0px;
             top: 300px;
-            right: 200px;
+            right: 100px;
             position: absolute;
             font-size: 35px;
         }
         #txt{
             position: absolute;
-            right: 200px;
+            right: 100px;
             top: 250px;
             width: 100px;
             font-size: 20px;
+        }
+        #remove-button{
+            width: 160px;
+            height: 100px;
+            background-color: black;
+            color: white;
+            border: 0px;
+            top: 300px;
+            right: 220px;
+            font-size: 35px;    
+            position: absolute;
         }
         
     </style>
@@ -97,6 +108,7 @@
             </nav>-->
             <nav class="color-menu"></nav>
             <button id='main-button'>Add</button>
+            <button id='remove-button'>Remove</button>
             <input type="text" id='txt' value="#"/>
 
         </section>
@@ -117,7 +129,7 @@
             });
             //
             document.getElementById('main-button').addEventListener('click', addButton);
-            
+
             function addButton(event){
 
                 var inputValue = document.getElementById('txt').value;
@@ -134,6 +146,12 @@
 
                     document.getElementById('txt').value = '#';
                 }
+            }
+            document.getElementById('remove-button').addEventListener('click', removeButton);
+
+            function removeButton(event){
+                var allButtons = document.getElementsByClassName('color-btn');
+                allButtons[allButtons.length - 1].remove();
             }
             //
 
