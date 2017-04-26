@@ -46,7 +46,10 @@
                     button.addEventListener('click', changeColor);
                 });
             }
-
+            /**
+             * Changes color
+             * @param {*} event 
+             */
             function changeColor(event) {
                 obj = event.target;
 
