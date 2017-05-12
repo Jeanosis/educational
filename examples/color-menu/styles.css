@@ -13,6 +13,16 @@
     top: 70%; 
     left: 50%;
 }
+#date{
+    font-size: 40px;
+    color: white;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    position: absolute; 
+    bottom: 0px; 
+    left: 50%;
+}
 
 .head-wrapper {
     text-align: center;

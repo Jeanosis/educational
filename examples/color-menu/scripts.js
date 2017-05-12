@@ -82,22 +82,26 @@
 
             localStorage.setItem('bodyCOLOR', JSON.stringify(color));
             localStorage.setItem('colorTime', Date.now());
-            // getTime();
-            // var tmp = {
-            //     name: 'Valera',
-            //     value: 'None'
-            // };
-            // var tmp_json = JSON.stringify(tmp);
-            // console.log(tmp, typeof tmp);
-            // console.log(tmp_json, typeof tmp_json);
-            // console.log(JSON.parse(tmp_json));
         }
 
         function getDate(date){
-            var now = Date.now();
+            var now = Date.now(),
+                mainDate = new Date (now - date),
+                minutes = mainDate.getMinutes(),
+                hours = mainDate.getUTCHours(),
+                days = mainDate.getUTCDay();
 
-            console.log('DATE', new Date(now - date).getSeconds());
-            // console.log('Y:', year, 'M:', month, 'D:', day, 'hours:', hours, 'min:', minutes, 'sec:', seconds);
+            var dateTitle = document.getElementById('date');
+            
+            if(hours < 1){
+                dateTitle.innerHTML = minutes + ' minutes ago';
+            } else if(days < 1){
+                dateTitle.innerHTML = hours + ' hours ago';
+            } else if(days < 2){
+                dateTitle.innerHTML = 'yesterday';
+            } else{
+                dateTitle.innerHTML =  + ((new Date().getMonth() + 1) + '.' + (new Date().getFullYear()));
+            }
         }
 
         function getTextColor(color) {
