@@ -13,7 +13,7 @@
             
             initializeMenu(menu, colors);
             initializePanel(menu);
-            getTime();
+            getDate(new Date(parseInt(localStorage.getItem('colorTime'), 10)));
         });
 
         /**
@@ -81,7 +81,8 @@
             t2.style.color = getTextColor(color);
 
             localStorage.setItem('bodyCOLOR', JSON.stringify(color));
-            getTime();
+            localStorage.setItem('colorTime', Date.now());
+            // getTime();
             // var tmp = {
             //     name: 'Valera',
             //     value: 'None'
@@ -91,18 +92,13 @@
             // console.log(tmp_json, typeof tmp_json);
             // console.log(JSON.parse(tmp_json));
         }
-        function getTime(){
-            var today = new Date(),
-                year = today.getFullYear(),
-                month = today.getMonth() + 1,
-                day = today.getDate(),
-                hours = today.getHours(),
-                minutes = today.getMinutes(),
-                seconds = today.getSeconds();
 
-            console.log('Y:', year, 'M:', month, 'D:', day, 'hours:', hours, 'min:', minutes, 'sec:', seconds);
+        function getDate(date){
+            var now = Date.now();
+
+            console.log('DATE', new Date(now - date).getSeconds());
+            // console.log('Y:', year, 'M:', month, 'D:', day, 'hours:', hours, 'min:', minutes, 'sec:', seconds);
         }
-        
 
         function getTextColor(color) {
             var rgbColor = getRGB(color);
