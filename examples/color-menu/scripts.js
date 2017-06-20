@@ -14,6 +14,13 @@
             initializeMenu(menu, colors);
             initializePanel(menu);
             getDate(new Date(parseInt(localStorage.getItem('colorTime'), 10)));
+            //
+            document.body.addEventListener("mouseover", getObjectTag);
+            function getObjectTag(){
+                var x = event.target.tagName;
+                console.log(x);
+            }
+            //
         });
 
         /**
