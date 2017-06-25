@@ -1,9 +1,7 @@
-// 'use strict';
-
 (function(document){
-    console.log(document.getElementById('1'));
-    console.log('1');
-});
 
+    // var table = document.getElementById("table");
+    // var rows = table.getElementsByTagName("tr");
 
-    console.log(document.getElementById('1'));
+    // console.log(rows, table);
+})(document);
