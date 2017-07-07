@@ -25,5 +25,8 @@
         document.getElementById('results').appendChild(td);
         td.innerHTML = sum[i];
     }
+    // for (let [index, value] of [1, 2, 3, 4, 5].entries()) {
+    //     console.log(index, value);
+    // }
     console.log('SUM', sum);
 })(document, window);
