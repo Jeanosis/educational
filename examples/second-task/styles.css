@@ -2,3 +2,6 @@
     font-size: 70px;
     background-color: whitesmoke;
 }
+tr:last-child{
+    background-color: red;
+}

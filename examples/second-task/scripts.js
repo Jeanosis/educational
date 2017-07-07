@@ -2,6 +2,7 @@
     var table = document.getElementById("table");
     var rows = table.getElementsByTagName("tr");
     var sum = [];
+    var results = document.getElementById("results");
 
     for(var i = 0; i < rows.length; i++) {
         var columns = rows[i].getElementsByTagName('td');
@@ -10,9 +11,9 @@
             var cell = parseFloat(columns[j].innerHTML);
 
             if (isNaN(cell)) {
-                continue;
+                cell = 0;
             }
-            
+
             if (j >= sum.length) {
                 sum.push(cell);
             } else {
@@ -20,6 +21,5 @@
             }
         }
     }
-
     console.log('SUM', sum);
 })(document, window);
