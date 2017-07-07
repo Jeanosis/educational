@@ -2,7 +2,6 @@
     var table = document.getElementById("table");
     var rows = table.getElementsByTagName("tr");
     var sum = [];
-    var results = document.getElementById("results");
 
     for(var i = 0; i < rows.length; i++) {
         var columns = rows[i].getElementsByTagName('td');
@@ -20,6 +19,11 @@
                 sum[j] += cell;
             }
         }
+    }
+    for(var i = 0; i < sum.length; i++) {
+        var td = document.createElement('td');
+        document.getElementById('results').appendChild(td);
+        td.innerHTML = sum[i];
     }
     console.log('SUM', sum);
 })(document, window);

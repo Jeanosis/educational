@@ -1,7 +1,8 @@
 #table{
     font-size: 70px;
-    background-color: whitesmoke;
+    text-align: center;
+    border: 1px inset #212121;
 }
 tr:last-child{
-    background-color: red;
+    background-color: #E0E0E0;
 }
