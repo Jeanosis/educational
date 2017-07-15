@@ -3,9 +3,11 @@
     text-align: center;
     border: 1px inset #212121;
 }
-#table * {
+
+#table tr > td {
     width: 60px;
 }
-tr:last-child{
+
+#table tr:last-child{
     background-color: #E0E0E0;
 }

@@ -20,6 +20,7 @@
             }
         }
     }
+    
     for(var i = 0; i < sum.length; i++) {
         var td = document.createElement('td');
         document.getElementById('results').appendChild(td);
