@@ -8,6 +8,6 @@
     width: 60px;
 }
 
-#table tr:last-child{
+#table > tr:last-child{
     background-color: #E0E0E0;
 }

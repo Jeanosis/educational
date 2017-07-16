@@ -17,11 +17,12 @@
             }
         });
     }
-
-    for(var i = 0; i < sum.length; i++) {
-        var td = document.createElement('td');
-        document.getElementById('results').appendChild(td);
-        td.innerHTML = sum[i];
+    let res = document.createElement('tr');
+    for (let i of sum) {
+        let td = document.createElement('td');
+        table.appendChild(res);
+        res.appendChild(td);
+        td.innerHTML = i;
     }
     console.log('SUM', sum);
 })(document, window);
