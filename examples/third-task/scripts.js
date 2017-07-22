@@ -15,7 +15,7 @@
             } else {
                 var beginIndex = input.value.indexOf(symbol),
                     substring = input.value.substr(beginIndex, input.value.length);
-                    words[i] = substring.split(' ');
+                    words = substring.split(' ');
             }
         }
         console.log(words);
