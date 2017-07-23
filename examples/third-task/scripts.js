@@ -2,29 +2,21 @@
     var input = document.getElementById('txt');
 
     input.addEventListener("change", function(){
-        console.clear();
-        console.log(input.value);
-        console.log(input.value.length);
         
-        for (var i = 0; i < input.value.length; i++) {
-            var symbol = input.value[i],
-                words = [];
+        var beginIndex = 0;
+        var lastIndex = 0;
+        var words = [];
 
-            if (symbol == ' ' && words == []) {
-                i += 1;
-            } else {
-                var beginIndex = input.value.indexOf(symbol),
-                    substring = input.value.substr(beginIndex, input.value.length);
-                    words = substring.split(' ');
+        for(var i = 0; i < input.value.length; i++) {
+
+            if(input.value[i + 1] !== ' ' && beginIndex === 0) {
+                beginIndex = i - 1;
+            } else if(input.value[i] !== ' ' && input.value[i + 1] === ' ') {
+                lastIndex = i;
             }
         }
-        console.log(words);
+        words += input.value.substring(beginIndex, lastIndex + 1);
+        console.log(words.split(' '));
     });
-
-
-    // function getRGB(color) {
-    //         var beginIndex = color.indexOf('('),
-    //             substring = color.substring(beginIndex + 1, color.length - 1),
-    //             colorParams = substring.split(', ');
 
 })(document, window);
