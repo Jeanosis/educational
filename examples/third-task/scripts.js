@@ -5,6 +5,7 @@
         
         var beginIndex = 0;
         var lastIndex = 0;
+        var str = [];
         var words = [];
 
         for(var i = 0; i < input.value.length; i++) {
@@ -15,8 +16,12 @@
                 lastIndex = i;
             }
         }
-        words += input.value.substring(beginIndex, lastIndex + 1);
-        console.log(words.split(' '));
+        str += input.value.substring(beginIndex, lastIndex + 1);
+        words = str.split(' ');
+
+        console.log(words);
+
+        
     });
 
 })(document, window);
