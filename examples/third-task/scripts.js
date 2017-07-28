@@ -20,7 +20,7 @@
         words = str.split(' ');
 
         console.log(words);
-
+        // Привет. Наконец-то получилось настроить git на ubuntu
         
     });
 
