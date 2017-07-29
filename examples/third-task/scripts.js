@@ -20,7 +20,20 @@
         words = str.split(' ');
 
         console.log(words);
-        // "editor.fontFamily": "Consolas, 'Courier New', monospace",
+        // Работает только если после последнего слова поставить пробел
+
+        var sameWords = '';
+
+        for (var i = 0; i < words.length; i++) {
+
+            if(words[i] === words[i+1]) {
+                sameWords += words[i];
+            } else {
+                
+            }
+        }
+        console.log(sameWords);
+        // Нужно сравнивать слово с любым из строки, а не только 2 последовательных
         
     });
 
