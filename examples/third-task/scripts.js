@@ -25,15 +25,18 @@
         var sameWords = '';
 
         for (var i = 0; i < words.length; i++) {
-
-            if(words[i] === words[i+1]) {
-                sameWords += words[i];
-            } else {
-                
+            for(var j = i + 1; j < words.length; j++) {
+                if(words[i] === words[j]) {
+                    if(words[j] === words[j+1]){
+                        i += 1;
+                    } else {
+                        sameWords += words[j];
+                    }
+                }   
             }
         }
         console.log(sameWords);
-        // Нужно сравнивать слово с любым из строки, а не только 2 последовательных
+        // Когда слова повторяются больше 2-х раз и разные слова размещены не последовательно, происходит дичь
         
     });
 
