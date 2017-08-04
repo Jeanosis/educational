@@ -7,45 +7,14 @@
         console.log('WORDS', words);
         words = removeDuplicates(words);
         console.log('Unique', words);
-        // console.log(words[0] === words[1]);
-        // var beginIndex = 0;
-        // var lastIndex = 0;
-        // var str = [];
-        // var words = [];
-        
-
-        // for(var i = 0; i < input.value.length; i++) {
-
-        //     if(input.value[i + 1] !== ' ' && beginIndex === 0) {
-        //         beginIndex = i - 1;
-        //     } else if(input.value[i] !== ' ' && input.value[i + 1] === ' ') {
-        //         lastIndex = i;
-        //     }
-        // }
-        // str += input.value.substring(beginIndex, lastIndex + 1);
-        // words = str.split(' ');
-
-        // console.log(words);
-        // // Работает только если после последнего слова поставить пробел
-
-        // var sameWords = '';
-
-        // for (var i = 0; i < words.length; i++) {
-        //     for(var j = i + 1; j < words.length; j++) {
-        //         if(words[i] === words[j]) {
-        //             if(words[j] === words[j+1]){
-        //                 i += 1;
-        //             } else {
-        //                 sameWords += words[j];
-        //             }
-        //         }   
-        //     }
-        // }
-        // console.log(sameWords);
-        // // Когда слова повторяются больше 2-х раз и разные слова размещены не последовательно, происходит дичь
-        
     });
 
+    /**
+     * Take the words from the string
+     * 
+     * @param {string} str String with words
+     * @return {string} Words to which the string is broken
+     */
     function getWords(str) {
         var beginIndex = str[0] === ' ' ? -1 : 0;
         var words = [];
@@ -67,21 +36,44 @@
         return words;
     }
 
-    function removeDuplicates(words) {
+    // function removeDuplicates(words) {
+    //     var uniqueWords = [];
+
+    //     for (var i = 0; i < words.length; i++) {
+    //         var isUnique = true;
+
+    //         for (var j = i + 1; j < words.length; j++) {
+    //             if (words[i].toLowerCase() === words[j].toLowerCase()) {
+    //                 isUnique = false;
+    //                 break;
+    //             }
+    //         }
+
+    //         if (isUnique) {
+    //             uniqueWords.push(words[i]);
+    //         }
+    //     }
+
+    //     return uniqueWords;
+    // }
+
+    
+    /**
+     * Remove dublicate words
+     * 
+     * @param {string} words Words to which the string is broken
+     * @return {string} Unique words from all words
+     */
+    function removeDuplicates (words) {
         var uniqueWords = [];
 
         for (var i = 0; i < words.length; i++) {
-            var isUnique = true;
+            uniqueWords.push(words[i]);
 
-            for (var j = i + 1; j < words.length; j++) {
+            for(var j = i + 1; j < words.length; j++) {
                 if (words[i].toLowerCase() === words[j].toLowerCase()) {
-                    isUnique = false;
-                    break;
+                    uniqueWords.pop(words[j]);
                 }
-            }
-
-            if (isUnique) {
-                uniqueWords.push(words[i]);
             }
         }
 
