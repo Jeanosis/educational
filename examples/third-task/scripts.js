@@ -16,24 +16,25 @@
      * @return {string} Words to which the string is broken
      */
     function getWords(str) {
-        var beginIndex = str[0] === ' ' ? -1 : 0;
-        var words = [];
+        // var beginIndex = str[0] === ' ' ? -1 : 0;
+        // var words = [];
 
-        for (var i = 1; i < str.length; i++) {
-            if (beginIndex > -1 && str[i] === ' ') {
-                words.push(str.substring(beginIndex, i));
+        // for (var i = 1; i < str.length; i++) {
+        //     if (beginIndex > -1 && str[i] === ' ') {
+        //         words.push(str.substring(beginIndex, i));
 
-                beginIndex = -1;
-            } else if (str[i - 1] === ' ' && str[i] !== ' ') {
-                beginIndex = i;
-            }
-        }
+        //         beginIndex = -1;
+        //     } else if (str[i - 1] === ' ' && str[i] !== ' ') {
+        //         beginIndex = i;
+        //     }
+        // }
 
-        if (beginIndex > -1 && str[str.length - 1] !== ' ') {
-            words.push(str.substring(beginIndex, str.length));
-        }
+        // if (beginIndex > -1 && str[str.length - 1] !== ' ') {
+        //     words.push(str.substring(beginIndex, str.length));
+        // }
 
-        return words;
+        // return words;
+        return str.match(/\b\S+\b/g);
     }
 
     // function removeDuplicates(words) {
