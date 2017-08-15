@@ -5,8 +5,8 @@
         var words = getWords(input.value);
 
         console.log('WORDS', words);
-        words = removeDuplicates(words);
-        console.log('Unique', words);
+        // words = removeDuplicates(words);
+        // console.log('Unique', words);
     });
 
     /**
@@ -34,7 +34,18 @@
         // }
 
         // return words;
-        return str.match(/\b\S+\b/g);
+
+
+
+        str = str.match(/\b\S+\b/g);
+        // str = str.match(/Vas/g);
+
+        // str = str.replace(//g, '');
+        // var n = str.search(/Vas/gi);
+        // console.log(n)
+        return str;
+
+
     }
 
     // function removeDuplicates(words) {
@@ -56,6 +67,7 @@
     //     }
 
     //     return uniqueWords;
+
     // }
 
     
@@ -65,19 +77,19 @@
      * @param {string} words Words to which the string is broken
      * @return {string} Unique words from all words
      */
-    function removeDuplicates (words) {
-        var uniqueWords = [];
+    // function removeDuplicates (words) {
+    //     var uniqueWords = [];
 
-        for (var i = 0; i < words.length; i++) {
-            uniqueWords.push(words[i]);
+    //     for (var i = 0; i < words.length; i++) {
+    //         uniqueWords.push(words[i]);
 
-            for(var j = i + 1; j < words.length; j++) {
-                if (words[i].toLowerCase() === words[j].toLowerCase()) {
-                    uniqueWords.pop(words[j]);
-                }
-            }
-        }
+    //         for(var j = i + 1; j < words.length; j++) {
+    //             if (words[i].toLowerCase() === words[j].toLowerCase()) {
+    //                 uniqueWords.pop(words[j]);
+    //             }
+    //         }
+    //     }
 
-        return uniqueWords;
-    }
+    //     return uniqueWords;
+    // }
 })(document, window);
