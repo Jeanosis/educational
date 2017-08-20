@@ -22,6 +22,7 @@
     str = str.match(regexp);
 
     console.log('task 3:', str[0]);
+    //
 
     
 })(document, window);
