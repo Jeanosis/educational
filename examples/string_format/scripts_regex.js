@@ -4,7 +4,7 @@
 
     //task 1
     var str = "hello hello Hello sdasd asda sd as",
-        regexp = /(\bhello\b([^a-z]+)?){3,}/gi;
+        regexp = /(\bhello\b([^a-z]+)?){2,}/gi;
     
     str = str.match(regexp);
 
