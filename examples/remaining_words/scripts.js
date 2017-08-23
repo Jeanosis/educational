@@ -17,7 +17,7 @@
             for (var i = 0; i < str.length; i++) {
                 words += str[i] + " ";
             }
-            words = words.replace(/(\b\w+\b)\s+(?=.*?\1)/gi, "");
+            words = words.replace(/(\b\w+\b)\s+(?=.*\1)/gi, "");
 
             return words;
         }
