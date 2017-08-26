@@ -12,14 +12,11 @@
         str = str.match(/(\b\w+\b)(?=(.*\b\1\b){2,})/gi);
         
         if(str) {
-            var words = "";
+            var words_str = str.join(' ');
 
-            for (var i = 0; i < str.length; i++) {
-                words += str[i] + " ";
-            }
-            words = words.replace(/(\b\w+\b)\s+(?=.*\1)/gi, "");
+            words_str = words_str.replace(/(\b\w+\b)\s+(?=.*\1)/gi, '');
 
-            return words;
+            return words_str.split(' ');
         }
     }
 
